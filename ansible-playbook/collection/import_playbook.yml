@@ -1,0 +1,2 @@
+---
+- import_playbook: limix.collection_demo.playbook

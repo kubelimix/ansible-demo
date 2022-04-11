@@ -1,0 +1,6 @@
+---
+# tasks file for tomcat
+- name: install tomcat
+  ansible.builtin.copy:
+    src: tomcat.tar.gz
+    dest: /Users/limix/servers/

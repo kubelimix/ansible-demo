@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  tasks:
+    - limix.collection_demo.test_info: 
+        name: "limix"
