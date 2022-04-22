@@ -1,5 +1,0 @@
----
-collections:
-- name: git+https://github.com:kubelimix/ansible-demo.git#/collection/limix/collection_demo/
-  type: git
-  version: master
