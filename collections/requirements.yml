@@ -1,0 +1,4 @@
+collections:
+  - name: git@github.com:kubelimix/ansible-collections.git
+    type: git
+    version: master
