@@ -1,5 +1,7 @@
 ---
-- hosts: localhost
+- name: play.tomcat
+  hosts: localhost
   tasks:
-    - import_role:
+    - name: import role
+      import_role:
         name: limix.collection_demo.tomcat
