@@ -1,5 +1,6 @@
 - name: test docker
   hosts: localhost
+  gather_facts: false
   tasks:
     - name: create docker
       community.general.docker_container:
@@ -14,6 +15,7 @@
         ansible_connection: docker
 - name: job
   hosts: limix-plantuml
+  gather_facts: false
   tasks:
     - name: test whoami
       ansible.builtin.command: cat /etc/hosts
