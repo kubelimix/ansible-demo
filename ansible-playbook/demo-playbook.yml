@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-    - test_info: 
+    - name: invoke test_info module
+      test_info: 
         name: "limix"
