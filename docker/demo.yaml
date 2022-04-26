@@ -1,0 +1,19 @@
+- name: test docker
+  hosts: localhost
+  tasks:
+    - name: create docker
+      community.general.docker_container:
+        name: limix-plantuml
+        image: plantuml/plantuml-server:jetty
+        # command: whoami
+        ports:
+          - "9998:8080"
+    - name: add the container to inventory
+      ansible.builtin.add_host:
+        name: limix-plantuml
+        ansible_connection: docker
+- name: job
+  hosts: limix-plantuml
+  tasks:
+    - name: test whoami
+      ansible.builtin.command: cat /etc/hosts
