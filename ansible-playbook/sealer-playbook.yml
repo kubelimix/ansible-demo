@@ -1,0 +1,12 @@
+---
+- hosts: sealer
+  gather_facts: false
+  tasks:
+    - name: "download sealer from github"
+      get_url:
+        url: "https://github.com/alibaba/sealer/releases/download/v0.8.3/sealer-v0.8.3-linux-amd64.tar.gz"
+        dest: "/User/limix/sealer"
+        mode: 0644
+        force: yes
+        validate_certs: no
+      tags: download

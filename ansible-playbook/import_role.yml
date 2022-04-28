@@ -1,6 +1,6 @@
 ---
-- name: play.tomcat
-  hosts: localhost
+- hosts: demo-group
+  name: play.tomcat
   tasks:
     - name: import role
       import_role:

@@ -1,6 +1,42 @@
 ---
-- hosts: localhost
+# invoke module
+- name: invoke modules
+  hosts: demo-group
+  gather_facts: false
   tasks:
-    - name: invoke test_info module
+    - name: invoke module by module_name
       test_info: 
         name: "limix"
+  tags: [module]
+
+# invoke role by roles
+- name: invoke roles
+  hosts: demo-group
+  gather_facts: false
+  roles:
+    - tomcat
+  tasks:
+    # local
+    - name: import role of local
+      import_role:
+        name: tomcat
+      tags: [import_role]
+    - name: include role of local
+      include_role:
+        name: tomcat
+      tags: [include_role]
+    # collection
+    - name: import role of collection
+      import_role:
+        name: limix.collection_demo.tomcat
+      tags: [import_role]
+    - name: include role of collection
+      include_role:
+        name: limix.collection_demo.tomcat
+      tags: [include_role]
+  tags: [role]
+
+# import playbook
+- name: invoke playbooks
+  import_playbook: limix.collection_demo.playbook
+  tags: [playbook]
