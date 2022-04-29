@@ -2,7 +2,7 @@
 # invoke module
 - name: invoke modules
   hosts: demo-group
-  gather_facts: false
+  gather_facts: true
   vars:
     test_var: from play vars
   vars_files:
@@ -11,6 +11,7 @@
     - name: invoke module by module_name
       test_info: 
         name: "{{ test_var }}"
+      when: ansible_facts['distribution'] == 'MacOSX'
   tags: [module]
 
 # invoke role by roles
