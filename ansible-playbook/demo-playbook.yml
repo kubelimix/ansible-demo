@@ -3,11 +3,19 @@
 - name: invoke modules
   hosts: demo-group
   gather_facts: true
-  debugger: never
   vars:
     test_var: from play vars
   vars_files:
     - files/my_var.yml
+  pre_tasks:
+    - name: pre task
+      debugger: never
+      no_log: false
+      action: command
+      args:
+        argv:
+          - "echo"
+          - "post tasks"
   tasks:
     - block:
         - name: invoke module by module_name
@@ -19,6 +27,13 @@
             name: "{{ test_var }}"
       when: ansible_facts['distribution'] == 'MacOSX'
   tags: [module]
+  post_tasks:
+    - name: post task
+      action: command
+      args:
+        argv:
+          - "echo"
+          - "post tasks"
 
 # invoke role by roles
 - name: invoke roles
