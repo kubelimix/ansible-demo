@@ -3,6 +3,7 @@
 - name: invoke modules
   hosts: demo-group
   gather_facts: true
+  debugger: never
   vars:
     test_var: from play vars
   vars_files:
@@ -11,6 +12,10 @@
     - block:
         - name: invoke module by module_name
           test_info:
+            name: "{{ test_var }}"
+        - name: invoke module by action
+          action: test_info
+          args:
             name: "{{ test_var }}"
       when: ansible_facts['distribution'] == 'MacOSX'
   tags: [module]
