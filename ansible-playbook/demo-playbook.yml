@@ -8,9 +8,10 @@
   vars_files:
     - files/my_var.yml
   tasks:
-    - name: invoke module by module_name
-      test_info: 
-        name: "{{ test_var }}"
+    - block:
+        - name: invoke module by module_name
+          test_info:
+            name: "{{ test_var }}"
       when: ansible_facts['distribution'] == 'MacOSX'
   tags: [module]
 
