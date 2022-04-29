@@ -3,10 +3,14 @@
 - name: invoke modules
   hosts: demo-group
   gather_facts: false
+  vars:
+    test_var: from play vars
+  vars_files:
+    - files/my_var.yml
   tasks:
     - name: invoke module by module_name
       test_info: 
-        name: "limix"
+        name: "{{ test_var }}"
   tags: [module]
 
 # invoke role by roles
@@ -37,6 +41,8 @@
   tags: [role]
 
 # import playbook
-- name: invoke playbooks
+- name: import playbook in local
+  import_playbook: import_playbook.yml
+- name: import playbooks in collection
   import_playbook: limix.collection_demo.playbook
   tags: [playbook]

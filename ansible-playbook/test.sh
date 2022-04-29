@@ -1,4 +1,6 @@
+ansible-playbook -i hosts -v demo-playbook.yml --list-hosts
 ansible-playbook -i hosts -v demo-playbook.yml --list-tasks
+ansible-playbook -i hosts -v demo-playbook.yml --list-tags
 
 # --list-hosts
 ansible-playbook -i hosts --private-key ~/.ssh/id_rsa sealer-playbook.yml --list-hosts
